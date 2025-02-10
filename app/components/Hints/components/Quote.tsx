@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-// import ImageTilt from '../../utils/ImageTilt/ImageTilt'
 import Tilt from '../../utils/ImageTilt/components/Tilt'
 
 interface QuoteProps {
@@ -20,7 +19,6 @@ const Quote = ({ displayAuthor, quoteData }: QuoteProps) => {
         className={classNames('flex-column', 'justify-center', 'align-center', 'width-max-content')}
       >
         <div className={classNames('margin-bottom-20', 'width-max-content')}>
-           {/* <ImageTilt alt='Quote Author' src={image} /> */}
           <Tilt>
             <img className="quote-image" src={image} alt="character" />
           </Tilt>
