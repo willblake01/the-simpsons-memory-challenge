@@ -1,21 +1,208 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("./public/images/morocco-blue.png");
+  font-family: sans-serif;
 }
+
+@font-face {
+  font-family: "Simpsons";
+  src: local("Simpsons"), url(./public/fonts/Simpsons/akbar.ttf) format("truetype");
+}
+
+h1 {
+  margin: 0;
+}
+
+input {
+  margin: 0.625rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  border: 0.063rem solid transparent;
+}
+
+button {
+  border: 0.063rem solid transparent;
+}
+
+li {
+  margin: 0 0 0.375rem 1rem;
+}
+
+/* Removes arrows from number input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/*# sourceMappingURL=index.css.map */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: start;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 1.25rem;
+}
+
+.margin-bottom-60 {
+  margin-bottom: 3.75rem;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.width-max-content {
+  width: max-content;
+}
+
+.large-button {
+  margin: 1.25rem 0.3125rem 1.25rem 0.3125rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: #ffffff;
+  color: #FFA500;
+  z-index: 99;
+}
+
+.small-button {
+  margin: 0 0 0 0.25rem;
+  padding: 0.063rem 0.25rem;
+  border-radius: 10.5rem;
+  background-color: #FFA500;
+  color: #ffffff;
+}
+
+.submit-button {
+  background-color: #ffffff;
+  color: #FFA500;
+}
+
+.header {
+  margin: 3rem 1.5rem 1.5rem 1.5rem;
+  font-family: Simpsons;
+  font-size: 5rem;
+}
+
+.quote {
+  font-family: "Simpsons";
+  font-size: 1.5rem;
+  max-width: 50rem;
+  border-radius: 1.563rem;
+  padding: 1.25rem;
+  background-color: #ffffff;
+  opacity: 0.75;
+}
+
+.quote-image {
+  height: 25rem;
+  width: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 1.563rem;
+  background-color: #FFA500;
+  color: #ffffff;
+  max-width: 40em;
+}
+
+.increment-decrement-button {
+  background-color: #FFA500;
+  color: #ffffff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 2.5rem 0.625rem 0.625rem 0.625rem;
+  padding: 1rem;
+  border-radius: 1.563rem;
+  min-height: 12.5rem;
+  min-width: 18.75rem;;
+  width: 'max-content';
+  background-color: #ffffff;
+}
+
+.list h2 {
+  align-self: center;
+  margin-bottom: 0.5rem;
+}
+
+.count {
+  margin: 1.5rem;
+  font-size: 3.75rem;
+}
+
+.constraints {
+  position: fixed;
+  padding: 1.25rem 18.75rem 0 18.75rem;
+  align-self: start;
+  width: 100%;
+  z-index: 2;
+}
+
+.hints {
+  position: relative;
+  z-index: 3;
+}
+
+.lists {
+  position: absolute;
+  padding: 0 5rem 0 5rem;
+  top: 21.25rem;
+  align-self: start;
+  width: 100%;
+  z-index: -1;
+}
+
+/*# sourceMappingURL=app.css.map */
