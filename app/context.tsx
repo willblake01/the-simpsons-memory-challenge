@@ -37,7 +37,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [clock, setClock] = useLocalStorage('clock', null)
   const [displayAuthor, setDisplayAuthor] = useLocalStorage('displayAuthor', false)
   const [displayHints, setDisplayHints] = useLocalStorage('displayHints', false)
-  const [goal, setGoal] = useLocalStorage('goal', 0)
+  const [goal, setGoal] = useLocalStorage('goal', null)
   const [rawList, setRawList] = useLocalStorage('rawList', [])
   const [revisionsRemaining, setRevisionsRemaining] = useLocalStorage(
     'revisionsRemaining',

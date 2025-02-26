@@ -12,6 +12,7 @@ interface ChallengeContext {
   setClock: (value: number) => void
   displayHints: boolean
   setDisplayHints: (value: boolean) => void
+  goal: number
   setScore: (value: number) => void
   themeSongRef: React.MutableRefObject<HTMLAudioElement | undefined>
 }
@@ -24,6 +25,7 @@ const Challenge = () => {
     setClock,
     displayHints,
     setDisplayHints,
+    goal,
     setScore,
     themeSongRef
   } = useContext(Context) as unknown as ChallengeContext
@@ -40,10 +42,10 @@ const Challenge = () => {
   }, [router, setClock, setDisplayHints, setScore, themeSongRef])
 
   useEffect(() => {
-    if (!challengeActive) {
+    if (goal && !challengeActive) {
       endChallenge()
     }
-  }, [challengeActive, endChallenge])
+  }, [challengeActive, endChallenge, goal])
 
   return (
     <div
