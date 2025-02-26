@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
 import { Context } from '../context'
@@ -30,20 +30,20 @@ const Challenge = () => {
 
   const challengeActive = clock > 0
 
-  const endChallenge = async () => {
+  const endChallenge = useCallback(async () => {
     Promise.all([
       themeSongRef.current?.load(),
       setScore(0),
       setClock(0),
       setDisplayHints(false)
     ]).then(() => router.push('/score'))
-  }
+  }, [router, setClock, setDisplayHints, setScore, themeSongRef])
 
   useEffect(() => {
     if (!challengeActive) {
       endChallenge()
     }
-  })
+  }, [challengeActive, endChallenge])
 
   return (
     <div

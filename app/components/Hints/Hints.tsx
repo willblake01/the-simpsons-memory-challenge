@@ -1,27 +1,33 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Context } from '../../context'
-import { useLocalStorage } from '../utils'
 import classNames from 'classnames'
-import { FidgetSpinner } from 'react-loader-spinner'
 import { Quote } from './components'
 import { HintsButtons } from './components'
+import LoadingSpinner from '../utils/LoadingSpinner'
 
 const Hints = () => {
   interface HintContext {
     displayAuthor: boolean
     setDisplayAuthor: (value: boolean) => void
+    quoteData: {
+      quote: string
+      character: string
+      image: string
+    }
+    setQuoteData: (value: object) => void
     setDisplayHints: (value: boolean) => void
   }
   
     const {
       displayAuthor,
       setDisplayAuthor,
+      quoteData,
+      setQuoteData,
       setDisplayHints,
     } = useContext(Context) as unknown as HintContext
 
   const [isLoading, setIsLoading] = useState(false)
-  const [quoteData, setQuoteData] = useLocalStorage('quoteData', null)
 
   const white = '#ffffff'
 
@@ -31,17 +37,17 @@ const Hints = () => {
     return data
   }
 
-  const handleFetchQuote = () => {
+  const handleFetchQuote = useCallback(() => {
     Promise.all([setIsLoading(true), setDisplayAuthor(false), fetchData()])
   .then(data => setQuoteData(data[2]))
   .then(() => setIsLoading(false))
-  }
+  }, [setDisplayAuthor, setQuoteData])
 
   useEffect(() => {
     if (!quoteData) {
       handleFetchQuote()
     }
-  })
+  }, [handleFetchQuote, quoteData])
 
   return (
     <div className="hints">
@@ -53,7 +59,9 @@ const Hints = () => {
         )}
       >
         {
-          isLoading ? <FidgetSpinner
+          isLoading
+            ?
+          <LoadingSpinner
             height="80"
             width="80"
             ariaLabel="dna-loading"
@@ -61,9 +69,10 @@ const Hints = () => {
             wrapperClass="dna-wrapper"
             ballColors={[white, white, white]}
             backgroundColor="orange"
+            visible={isLoading}
           />
-        :
-        <Quote quoteData={quoteData} displayAuthor={displayAuthor} />
+            :
+          <Quote quoteData={quoteData} displayAuthor={displayAuthor} />
         }
         <HintsButtons
             displayAuthor={displayAuthor}

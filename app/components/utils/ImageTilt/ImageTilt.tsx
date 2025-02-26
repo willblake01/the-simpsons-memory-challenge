@@ -1,20 +1,19 @@
 import React from 'react'
-import classNames from 'classnames'
 import { StaticImageData } from 'next/image'
 import Image from 'next/image'
 import Tilt from './components/Tilt'
 
 interface ImageProps {
   alt: string
-  src: StaticImageData | null
+  height?: number
+  width?: number
+  src: StaticImageData | string | null
 }
 
-const ImageTilt = ({ alt, src }: ImageProps) => (
-  <div className={classNames('margin-bottom-20', 'width-max-content')}>
-    <Tilt>
-      {src && <Image alt={alt} src={src} />}
-    </Tilt>
-  </div>
+const ImageTilt = ({ alt, height, src, width }: ImageProps) => (
+  <Tilt>
+    {src && <Image alt={alt} height={height} priority src={src} width={width} />}
+  </Tilt>
 )
 
 export default ImageTilt

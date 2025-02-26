@@ -26,7 +26,7 @@ const List = () => {
     <section>
       <ol className="list">
         <h2>All Characters</h2>
-        {rawList.map((character, index) => (
+        {rawList?.map((character, index) => (
           <li key={`${character}-${index}`}>
             {character}
             <SmallButton

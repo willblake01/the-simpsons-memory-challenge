@@ -22,7 +22,7 @@ const InitialGoal = () => {
     setGoal,
     setRawList,
     setRevisionsRemaining
-  } = useContext(Context) as InitialGoalContext
+  } = useContext(Context) as unknown as InitialGoalContext
 
   const handleGoalInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target

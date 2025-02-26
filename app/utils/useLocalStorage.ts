@@ -1,34 +1,45 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-function useLocalStorage(
+const useLocalStorage = (
   key: string,
-  defaultValue: null | number | string | boolean | object | Array<string | number | object>,
+    defaultValue: null | number | string | boolean | object | Array<string | number | object>,
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
-) {
-  const [state, setState] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const valueInLocalStorage = window.localStorage.getItem(key)
-
-      if (valueInLocalStorage) {
-      return deserialize(valueInLocalStorage)
-    }
-    }
-    return typeof defaultValue === 'function' ? defaultValue() : defaultValue
-  })
+) => {
+  const [state, setState] = useState(typeof defaultValue === 'function' ? defaultValue() : defaultValue)
 
   const prevKeyRef = useRef(key)
 
   useEffect(() => {
-    const prevKey = prevKeyRef.current
+    try {
+      if (window !== undefined) {
+        const valueInLocalStorage = window?.localStorage?.getItem(key)
 
-    if (typeof window !== 'undefined') {
-      if (prevKey !== key) {
-      window.localStorage.removeItem(prevKey)
+        if (valueInLocalStorage) {
+          setState(deserialize(valueInLocalStorage))
+        }
+      }
+    } catch (error) {
+      console.error(error)
     }
-    prevKeyRef.current = key
-    window.localStorage.setItem(key, serialize(state))
+  }, [key, deserialize])
+
+  useEffect(() => {
+    try {
+      if (window !== undefined) {
+        const prevKey = prevKeyRef.current
+
+        if (prevKey !== key) {
+          window?.localStorage?.removeItem(prevKey)
+        }
+        
+        prevKeyRef.current = key
+        window?.localStorage?.setItem(key, serialize(state))
+      }
+    } catch (error) {
+      console.error(error)
     }
-  }, [key, state, serialize])
+  }, [key, serialize, state])
+  
   return [state, setState]
 }
 

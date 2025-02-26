@@ -138,11 +138,6 @@ input[type=number] {
   opacity: 0.75;
 }
 
-.quote-image {
-  height: 25rem;
-  width: auto;
-}
-
 .form {
   display: flex;
   flex-direction: column;

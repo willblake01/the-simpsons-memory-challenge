@@ -12,6 +12,8 @@ interface ContextType {
   setDisplayHints: (value: boolean) => void
   goal: number
   setGoal: (value: number) => void
+  quoteData: object
+  setQuoteData: (value: object) => void
   rawList: string[]
   setRawList: (value: string[]) => void
   revisionsRemaining: number
@@ -33,7 +35,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const [clock, setClock] = useLocalStorage('clock', null)
-  const [goal, setGoal] = useLocalStorage('goal', null)
+  const [displayAuthor, setDisplayAuthor] = useLocalStorage('displayAuthor', false)
+  const [displayHints, setDisplayHints] = useLocalStorage('displayHints', false)
+  const [goal, setGoal] = useLocalStorage('goal', 0)
   const [rawList, setRawList] = useLocalStorage('rawList', [])
   const [revisionsRemaining, setRevisionsRemaining] = useLocalStorage(
     'revisionsRemaining',
@@ -42,8 +46,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [score, setScore] = useLocalStorage('score', 0)
   const [songIsPlaying, setSongIsPlaying] = useLocalStorage('songIsPlaying', false)
   const [songIsPaused, setSongIsPaused] = useLocalStorage('songIsPaused', false)
-  const [displayHints, setDisplayHints] = useLocalStorage('displayHints', false)
-  const [displayAuthor, setDisplayAuthor] = useLocalStorage('displayAuthor', false)
+  const [quoteData, setQuoteData] = useLocalStorage('quoteData', null)
 
   const context = {
     clock,
@@ -54,6 +57,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     setDisplayHints,
     goal,
     setGoal,
+    quoteData,
+    setQuoteData,
     rawList,
     setRawList,
     revisionsRemaining,

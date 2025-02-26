@@ -9,7 +9,7 @@ const Tilt = ({ children }) => {
     VanillaTilt.init(tiltNode, {
       max: 25,
       speed: 400,
-      glare: true,
+      glare: false,
       'max-glare': 0.5
     })
     return () => (tiltNode.VanillaTilt ? tiltNode.VanillaTilt.destroy() : null)
