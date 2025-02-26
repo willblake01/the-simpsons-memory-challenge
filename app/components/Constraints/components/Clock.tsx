@@ -1,13 +1,8 @@
 'use client'
 import React, { useContext, useEffect } from 'react'
 import classNames from 'classnames'
-import { Context } from '../../../context'
+import { Context, ContextType } from '@/app/context'
 import { msToTime } from '../../../utils/MSToTotalTime'
-
-interface Clock {
-  clock: number
-  setClock: (value: number) => void
-}
 
 const Clock = () => {
   const context = useContext(Context)
@@ -16,7 +11,7 @@ const Clock = () => {
     throw new Error("Clock must be used within a ContextProvider")
   }
 
-  const { clock, setClock } = context
+  const { clock, setClock } = context as unknown as ContextType
 
   useEffect(() => {
     const interval = setInterval(() => {

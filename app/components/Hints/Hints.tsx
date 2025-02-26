@@ -1,31 +1,19 @@
 'use client'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { Context } from '../../context'
+import { Context, ContextType } from '../../context'
 import classNames from 'classnames'
 import { Quote } from './components'
 import { HintsButtons } from './components'
 import LoadingSpinner from '../utils/LoadingSpinner'
 
 const Hints = () => {
-  interface HintContext {
-    displayAuthor: boolean
-    setDisplayAuthor: (value: boolean) => void
-    quoteData: {
-      quote: string
-      character: string
-      image: string
-    }
-    setQuoteData: (value: object) => void
-    setDisplayHints: (value: boolean) => void
-  }
-  
     const {
       displayAuthor,
       setDisplayAuthor,
       quoteData,
       setQuoteData,
       setDisplayHints,
-    } = useContext(Context) as unknown as HintContext
+    } = useContext(Context) as unknown as ContextType
 
   const [isLoading, setIsLoading] = useState(false)
 

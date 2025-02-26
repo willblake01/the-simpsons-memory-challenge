@@ -3,7 +3,7 @@ import React, { createContext, ReactNode, useRef } from 'react'
 import { useLocalStorage } from './components/utils'
 import themeSongMP3 from './public/audio/The_Simpsons_Theme_Song.mp3'
 
-interface ContextType {
+export interface ContextType {
   clock: number
   setClock: (value: number) => void
   displayAuthor: boolean
@@ -12,8 +12,16 @@ interface ContextType {
   setDisplayHints: (value: boolean) => void
   goal: number
   setGoal: (value: number) => void
-  quoteData: object
-  setQuoteData: (value: object) => void
+  quoteData: {
+    quote: string
+    character: string
+    image: string
+  } | null
+  setQuoteData: (value: {
+    quote: string
+    character: string
+    image: string
+  } | null) => void
   rawList: string[]
   setRawList: (value: string[]) => void
   revisionsRemaining: number

@@ -8,11 +8,11 @@ interface QuoteProps {
     character: string
     image: string
     quote: string
-  }
+  } | null
 }
 
 const Quote = ({ displayAuthor, quoteData }: QuoteProps) => {
-  const { character, image, quote } = quoteData || {}
+  const { character = '', image = '', quote = '' } = quoteData || {}
 
   {
     return quoteData && (

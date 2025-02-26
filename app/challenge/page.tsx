@@ -2,20 +2,10 @@
 import React, { useCallback, useContext, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
-import { Context } from '../context'
+import { Context, ContextType } from '../context'
 import { Constraints, Hints, Lists, SongPlayer } from '../components'
 import { LargeButton } from '../components/utils'
 import { AddListItem } from '../components/Lists/components'
-
-interface ChallengeContext {
-  clock: number
-  setClock: (value: number) => void
-  displayHints: boolean
-  setDisplayHints: (value: boolean) => void
-  goal: number
-  setScore: (value: number) => void
-  themeSongRef: React.MutableRefObject<HTMLAudioElement | undefined>
-}
 
 const Challenge = () => {
   const router = useRouter()
@@ -26,9 +16,10 @@ const Challenge = () => {
     displayHints,
     setDisplayHints,
     goal,
+    setQuoteData,
     setScore,
     themeSongRef
-  } = useContext(Context) as unknown as ChallengeContext
+  } = useContext(Context) as unknown as ContextType
 
   const challengeActive = clock > 0
 
@@ -37,9 +28,10 @@ const Challenge = () => {
       themeSongRef.current?.load(),
       setScore(0),
       setClock(0),
+      setQuoteData(null),
       setDisplayHints(false)
     ]).then(() => router.push('/score'))
-  }, [router, setClock, setDisplayHints, setScore, themeSongRef])
+  }, [router, setClock, setDisplayHints, setQuoteData, setScore, themeSongRef])
 
   useEffect(() => {
     if (goal && !challengeActive) {

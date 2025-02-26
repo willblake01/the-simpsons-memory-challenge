@@ -1,8 +1,7 @@
 'use client'
 import React, { useContext } from 'react'
-import { Context } from '../../../context'
+import { Context, ContextType } from '../../../context'
 import { SmallButton } from '../../utils'
-import type { RawList } from '../../../types/RawList'
 
 const List = () => {
   const context = useContext(Context)
@@ -11,7 +10,7 @@ const List = () => {
     return null
   }
 
-  const { rawList, setRawList }: RawList = context
+  const { rawList, setRawList } = context as unknown as ContextType
 
   interface DeleteListItem {
     (item: string): void

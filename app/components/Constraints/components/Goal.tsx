@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Context } from '../../../context'
+import { Context, ContextType } from '@/app/context'
 import { SmallButton } from '../../utils'
 import { Counter } from '.'
 
@@ -17,7 +17,7 @@ const Goal = () => {
     goal,
     revisionsRemaining,
     setRevisionsRemaining
-  } = context
+  } = context as unknown as ContextType
 
   const [revise, setRevise] = useState(false)
 

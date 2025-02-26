@@ -1,15 +1,8 @@
 import React, { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
-import { Context } from '../context'
+import { Context, ContextType } from '../context'
 import { LargeButton, UserInput } from './utils'
-
-interface InitialGoalContext {
-  setClock: (value: number) => void
-  setGoal: (value: number) => void
-  setRawList: (value: string[]) => void
-  setRevisionsRemaining: (value: number) => void
-}
 
 const InitialGoal = () => {
   const router = useRouter()
@@ -22,7 +15,7 @@ const InitialGoal = () => {
     setGoal,
     setRawList,
     setRevisionsRemaining
-  } = useContext(Context) as unknown as InitialGoalContext
+  } = useContext(Context) as unknown as ContextType
 
   const handleGoalInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target

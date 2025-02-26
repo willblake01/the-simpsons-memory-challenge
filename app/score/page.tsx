@@ -4,25 +4,18 @@ import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
 import { StaticImageData } from 'next/image'
 import { ImageTilt } from '../components/utils/ImageTilt'
-import { Context } from '../context'
+import { Context, ContextType } from '../context'
 import { LargeButton } from '../components/utils'
 import lisa from '../public/images/lisa.png'
 import moe from '../public/images/moe.png'
 import nelson from '../public/images/nelson.png'
-
-interface ScoreContext {
-  goal: number
-  rawList: string[]
-  score: number
-  setScore: (value: number) => void
-}
 
 const Score = () => {
   const router = useRouter()
 
   const {
       goal, rawList, score, setScore
-    } = useContext(Context) as unknown as ScoreContext
+    } = useContext(Context) as unknown as ContextType
   
   const [imageSource, setImageSource] = useState<StaticImageData | null>(null)
   const [imageHeadline, setImageHeadline] = useState('')

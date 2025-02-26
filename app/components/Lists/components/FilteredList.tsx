@@ -1,11 +1,11 @@
 'use client'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import { Context } from '../../../context'
+import { Context, ContextType } from '../../../context'
 
 const FilteredList = () => {
   const context = useContext(Context)
 
-  const rawList: string[] = useMemo(() => context?.rawList || [], [context?.rawList])
+  const rawList: string[] = useMemo(() => context?.rawList || [], [context?.rawList]) as unknown as ContextType['rawList']
 
   const [familyMembers, setFamilyMembers] = useState<string[]>(context?.rawList || [])
 

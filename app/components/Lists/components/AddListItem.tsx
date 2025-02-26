@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext, useState } from 'react'
-import { Context } from '../../../context'
+import { Context, ContextType } from '@/app/context'
 import { LargeButton, UserInput } from '../../utils'
 import Alert from '../../utils/Alert'
 
@@ -11,7 +11,7 @@ const AddListItem = () => {
     throw new Error('Context must be used within a Provider')
   }
 
-  const { rawList, setRawList } = context
+  const { rawList, setRawList } = context as unknown as ContextType
 
   const [newItem, setNewItem] = useState('')
 

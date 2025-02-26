@@ -1,16 +1,8 @@
 'use client'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Context } from '../context'
+import { Context, ContextType } from '../context'
 import { LargeButton } from './utils'
-
-interface SongContext {
-  songIsPaused: boolean
-  setSongIsPaused: (value: boolean) => void
-  songIsPlaying: boolean
-  setSongIsPlaying: (value: boolean) => void
-  themeSongRef: React.MutableRefObject<HTMLAudioElement | undefined>
-}
 
 const SongPlayer: React.FC = () => {
   const [playPauseButtonText, setPlayPauseButtonText] = useState<string>('Play Song')
@@ -20,7 +12,7 @@ const SongPlayer: React.FC = () => {
     songIsPlaying,
     setSongIsPlaying,
     themeSongRef,
-  } = useContext(Context) as unknown as SongContext
+  } = useContext(Context) as unknown as ContextType
 
   const playSong = (): void => {
     if (!songIsPlaying) {
