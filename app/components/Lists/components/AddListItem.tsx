@@ -123,12 +123,9 @@ const AddListItem = () => {
         text: `${character} is not a Simpsons character, please add a Simpsons character.`
     })
     } else {
-      const onlyCharacters = rawList
-        .filter((character: string) =>
-          allCharacters.some(familyMember => familyMember.includes(character))
-        )
-        .map((filteredCharacter: string) => filteredCharacter)
-      setRawList(onlyCharacters.concat(character))
+      const onlyCharacters = allCharacters.filter(character => character.includes(newItem))
+      
+      setRawList([...rawList, ...onlyCharacters])
     }
   }
 

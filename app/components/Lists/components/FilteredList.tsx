@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import { Context, ContextType } from '../../../context'
+import { Context, ContextType } from '@/app/context'
 
 const FilteredList = () => {
   const context = useContext(Context)
@@ -11,16 +11,16 @@ const FilteredList = () => {
 
   useEffect(() => {
     const theSimpsons: string[] = [
-    'Homer Simpson',
-    'Marge Simpson',
-    'Bart Simpson',
-    'Lisa Simpson',
-    'Maggie Simpson',
-    'Abraham Simpson',
-    "Santa's Little Helper",
-    'Snowball II',
-    'Snowball V'
-  ]
+      'Homer Simpson',
+      'Marge Simpson',
+      'Bart Simpson',
+      'Lisa Simpson',
+      'Maggie Simpson',
+      'Abraham Simpson',
+      "Santa's Little Helper",
+      'Snowball II',
+      'Snowball V'
+    ]
 
     const filteredCharacterInput: string[] = rawList
       .filter((character: string) =>

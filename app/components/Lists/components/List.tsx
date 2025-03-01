@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext } from 'react'
-import { Context, ContextType } from '../../../context'
+import { Context, ContextType } from '@/app/context'
 import { SmallButton } from '../../utils'
 
 const List = () => {
