@@ -34,7 +34,7 @@ Your text editor may not natively support the JSX syntax that is used in this pr
 Then, clone this repository (click the green button saying "Clone or Download", choose http, and copy and paste it the location `<url>` ) and go into it:
 
 ```sh
-git clone <url>
+git clone git@github.com:willblake01/the-simpsons-memory-challenge.git
 cd simpsons-memory-challenge
 ```
 
