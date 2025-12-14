@@ -20,7 +20,7 @@ const Hints = () => {
   const white = '#ffffff'
 
   const fetchData = async () => {
-    const response = await fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
+    const response = await fetch('/api/quotes')
     const data = response.json().then(data => data[0])
     return data
   }

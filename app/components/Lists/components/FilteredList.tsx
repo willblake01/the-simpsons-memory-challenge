@@ -16,7 +16,7 @@ const FilteredList = () => {
       'Bart Simpson',
       'Lisa Simpson',
       'Maggie Simpson',
-      'Abraham Simpson',
+      'Abe Simpson',
       "Santa's Little Helper",
       'Snowball II',
       'Snowball V'

@@ -98,7 +98,8 @@ const AddListItem = () => {
     'Kang & Kodos',
     'Kirk Van Houten',
     'Lionel Hutz',
-    'Lunchlady Doris'
+    'Lunchlady Doris',
+    'Mayor Quimby'
   ]
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,9 +124,11 @@ const AddListItem = () => {
         text: `${character} is not a Simpsons character, please add a Simpsons character.`
     })
     } else {
-      const onlyCharacters = allCharacters.filter(character => character.includes(newItem))
-      
-      setRawList([...rawList, ...onlyCharacters])
+      const onlyCharacters = rawList
+        .filter((character: string) =>
+          allCharacters.some(familyMember => familyMember.includes(character))
+        )
+      setRawList(onlyCharacters.concat(character))
     }
   }
 
