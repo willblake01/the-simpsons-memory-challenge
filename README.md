@@ -4,9 +4,10 @@
 
 ## Instructions
 
-* log as many characters from The Simpsons as you can think of
-* log how many you were able to remember
-* that's it!
+* Set your target goal for how many characters from The Simpsons you can remember in 8 minutes, you can revise your goal once in the first 5 minutes
+* Log the characters you can recall
+* To score points for the challenge you must reach your goal
+* You will score 10 base points for every character in your goal and 1 bonus point for each additional character
 
 ### Requirements
 
