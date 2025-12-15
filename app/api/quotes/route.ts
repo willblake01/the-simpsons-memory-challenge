@@ -17,7 +17,6 @@ export async function GET(req: Request) {
 
   return NextResponse.json(data, {
     headers: {
-      // avoid stale quotes in edge caches unless you want caching
       'Cache-Control': 'no-store',
     },
   })

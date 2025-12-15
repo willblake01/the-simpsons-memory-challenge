@@ -25,10 +25,13 @@ const Score = () => {
   const hitGoal = rawList?.length >= goal
 
   const calculateScore = useCallback(() => {
+
     // A player must reach their goal to score points.
     if (rawList?.length >= goal) {
+
       // Base score is 10 points per item in the goal.
       const baseScore = goal * 10
+      
       // Additional 1 point bonus for each item over the goal.
       const additionalScore = rawList?.length - goal
       const totalScore = baseScore + additionalScore

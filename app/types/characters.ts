@@ -1,4 +1,8 @@
-export type Character = string
+export type Character = {
+  id: string
+  name: string
+  aliases?: string[]
+}
 
 export type CharacterList = Character[]
 

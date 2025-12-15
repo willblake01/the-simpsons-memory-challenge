@@ -2,6 +2,7 @@
 import React, { useContext } from 'react'
 import { Context, ContextType } from '@/app/context'
 import { SmallButton } from '../../utils'
+import { Character } from '@/app/types'
 
 const List = () => {
   const context = useContext(Context)
@@ -16,8 +17,8 @@ const List = () => {
     (item: string): void
   }
 
-  const deleteListItem: DeleteListItem = item => {
-    const rawListFiltered = rawList.filter((listItem: string) => listItem !== item)
+  const deleteListItem: DeleteListItem = itemName => {
+    const rawListFiltered = rawList.filter((listItem: Character) => listItem.name !== itemName)
     setRawList(rawListFiltered)
   }
   
@@ -27,10 +28,10 @@ const List = () => {
         <h2>All Characters</h2>
         {rawList?.map((character, index) => (
           <li key={`${character}-${index}`}>
-            {character}
+            {character.name}
             <SmallButton
               text="Delete"
-              onClick={() => deleteListItem(character)}
+              onClick={() => deleteListItem(character.name)}
             />
           </li>
         ))}

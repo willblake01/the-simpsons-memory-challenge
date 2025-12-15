@@ -20,11 +20,27 @@ const AddListItem = () => {
     setGuess(value)
   }
 
+  const normalizeGuess = (guess: string) => {
+    return guess
+      .trim()
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+  }
+
   const validateGuess = (guess: string) => {
-    const alreadyAdded = rawList.includes(guess)
-    const isSimpsonsCharacter = ALL_CHARACTERS.some(character =>
-      character.includes(guess)
-    )
+    const normalized = normalizeGuess(guess)
+    const alreadyAdded = rawList.some(character => character.name === normalized || character.aliases?.includes(normalized))
+
+    const isSimpsonsCharacter = ALL_CHARACTERS.some(({ name, aliases }) => {
+      const namesToMatch = [name, ...(aliases ?? [])].map(normalizeGuess)
+
+      return namesToMatch.some(n => n === normalized)
+    })
 
     if (alreadyAdded) {
       Alert({
@@ -37,7 +53,13 @@ const AddListItem = () => {
         text: `${guess} is not a Simpsons character, please add a Simpsons character.`
       })
     } else {
-      setRawList(rawList.concat(guess))
+      const character = ALL_CHARACTERS.find(({ name, aliases }) => {
+        const namesToMatch = [name, ...(aliases ?? [])].map(normalizeGuess)
+        return namesToMatch.some(n => n === normalized)
+      })
+      if (character) {
+        setRawList(rawList.concat(character))
+      }
     }
   }
 

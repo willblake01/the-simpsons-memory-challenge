@@ -30,6 +30,7 @@ const Goal = () => {
   }
 
   useEffect(() => {
+    
     // Revisions only allowed in the first 5 minutes
     if (clock <= 180000) {
       setRevisionsRemaining(0)

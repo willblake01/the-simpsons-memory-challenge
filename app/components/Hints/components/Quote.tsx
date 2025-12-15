@@ -24,7 +24,7 @@ const Quote = ({ showAuthor, quoteData }: QuoteProps) => {
           <br />
           <br />
           <cite>
-            {showAuthor ? `-${character}` : '-Anonymous Character'}
+            {showAuthor ? `-${character}` : null}
           </cite>
         </blockquote>
       </div>
