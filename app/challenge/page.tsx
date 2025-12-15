@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
 import { Context, ContextType } from '../context'
-import { Constraints, Hints, Lists, SongPlayer } from '../components'
+import { GameStatus, Hints, Lists, SongPlayer } from '../components'
 import { LargeButton } from '../components/utils'
 import { AddListItem } from '../components/Lists/components'
 import themeSongMP3 from '../public/audio/The_Simpsons_Theme_Song.mp3'
@@ -51,7 +51,7 @@ const Challenge = () => {
         'margin-bottom-60'
       )}
     >
-      <Constraints />
+      <GameStatus />
       {displayHints ? (
         <Hints />
       ) : (

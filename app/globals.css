@@ -178,7 +178,7 @@ input[type=number] {
   font-size: 3.75rem;
 }
 
-.constraints {
+.game-status {
   position: fixed;
   padding: 1.25rem 18.75rem 0 18.75rem;
   align-self: start;

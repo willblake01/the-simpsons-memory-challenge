@@ -2,10 +2,10 @@ import React from 'react'
 import classNames from 'classnames'
 import { Clock, Goal } from './components'
 
-const Constraints = () => (
+const GameStatus = () => (
   <div
     className={classNames(
-      'constraints',
+      'game-status',
       'flex-row',
       'space-between',
       'align-start'
@@ -16,4 +16,4 @@ const Constraints = () => (
   </div>
 )
 
-export default Constraints
+export default GameStatus
