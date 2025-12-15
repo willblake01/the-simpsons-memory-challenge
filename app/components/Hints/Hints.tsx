@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Context, ContextType } from '../../context'
 import { LoadingSpinner, useLocalStorage } from '../../components/utils'
-import { HintsButtons, Quote } from './components'
+import { HintsButtons, QuoteDisplay } from './components'
 
 const Hints = () => {
     const {
@@ -58,7 +58,7 @@ const Hints = () => {
             visible={isLoading}
           />
             :
-          <Quote quoteData={quote} showAuthor={showAuthor} />
+          <QuoteDisplay quoteData={quote} showAuthor={showAuthor} />
         }
         <HintsButtons
             showAuthor={showAuthor}
