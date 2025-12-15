@@ -4,8 +4,6 @@ export type Character = {
   aliases?: string[]
 }
 
-export type CharacterList = Character[]
-
 export interface Quote {
   quote: string
   character: string

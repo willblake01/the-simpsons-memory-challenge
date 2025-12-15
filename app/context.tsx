@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, ReactNode } from 'react'
 import { useLocalStorage } from './components/utils'
-import { Character, CharacterList, Quote } from './types'
+import { Character, Quote } from './types'
 
 export interface ContextType {
   clock: number
@@ -12,7 +12,7 @@ export interface ContextType {
   setGoal: (value: number) => void
   quote: Quote | null
   setQuote: (value: Quote | null) => void
-  rawList: CharacterList
+  rawList: Character[]
   setRawList: (value: Character[]) => void
   revisionsRemaining: number
   setRevisionsRemaining: (value: number) => void

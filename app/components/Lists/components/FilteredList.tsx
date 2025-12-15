@@ -1,13 +1,13 @@
 'use client'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { Context, ContextType } from '@/app/context'
-import type { Character, CharacterList } from '@/app/types'
+import type { Character } from '@/app/types'
 import { THE_SIMPSONS_FAMILY } from '@/app/constants'
 
 const FilteredList = () => {
   const context = useContext(Context)
 
-  const rawList: CharacterList = useMemo(() => context?.rawList || [], [context?.rawList]) as unknown as ContextType['rawList']
+  const rawList: Character[] = useMemo(() => context?.rawList || [], [context?.rawList]) as unknown as ContextType['rawList']
 
   const [familyMembers, setFamilyMembers] = useState<Character[]>(context?.rawList || [])
 

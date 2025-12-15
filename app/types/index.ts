@@ -1,1 +1,1 @@
-export type { Character, CharacterList, Quote } from './characters'
+export type { Character, Quote } from './characters'
