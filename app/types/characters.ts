@@ -8,7 +8,7 @@ export type CharacterList = Character[]
 
 export interface Quote {
   quote: string
-  character: Character
+  character: string
   image: string
   characterDirection: 'Left' | 'Right';
 }
