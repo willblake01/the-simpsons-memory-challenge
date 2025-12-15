@@ -35,20 +35,23 @@ const InitialGoal = () => {
       'flex-column',
       'align-center'
     )}>
-      <form className="form">
+      <form className='form' onSubmit={(e) => {
+        e.preventDefault()
+        startChallenge()
+      }}>
         <h1>{gamePrompt}</h1>
-        <div className="flex-row">
+        <div className='flex-row'>
           <UserInput
-            type="number"
-            pattern="[0-9]"
-            inputMode="numeric"
-            placeholder="Please Enter a Number"
-            id="initial-count-input"
+            type='number'
+            pattern='[0-9]'
+            inputMode='numeric'
+            placeholder='Please Enter a Number'
+            id='initial-count-input'
             onChange={handleGoalInput}
           />
           <LargeButton
-            text="Submit"
-            className="large-button"
+            text='Submit'
+            className='large-button'
             onClick={startChallenge}
           />
         </div>
