@@ -2,7 +2,7 @@ import React from 'react'
 
 interface UserInputProps {
   type: string
-  inputMode: 'text' | undefined
+  inputMode: 'text' | 'numeric' | undefined
   placeholder: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   pattern: string
