@@ -60,7 +60,9 @@ const AddListItem = () => {
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target as HTMLInputElement
-    setGuess(value)
+    const trimmedValue = value.trim()
+    
+    setGuess(trimmedValue)
   }
 
   const handleSubmit = () => {

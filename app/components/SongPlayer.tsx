@@ -37,14 +37,29 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
   const handlePlayPauseActions: () => void = isSongPlaying && !isSongPaused ? pauseSong : playSong
 
   useEffect(() => {
-    stopSong()
-  }, [setIsSongPaused, setIsSongPlaying, themeSongRef, stopSong])
-
-  useEffect(() => {
     const handleButtonText = (): void => isSongPlaying ? setPlayPauseButtonText('Pause Song') : setPlayPauseButtonText(isSongPaused ? 'Play Song' : 'Theme Song')
 
     handleButtonText()
   }, [isSongPlaying, isSongPaused])
+
+  useEffect(() => {
+    stopSong()
+  }, [setIsSongPaused, setIsSongPlaying, themeSongRef, stopSong])
+
+  useEffect(() => {
+    const audio = themeSongRef.current
+    if (!audio) return
+
+    const handleSongEnded = () => {
+      setIsSongPlaying(false)
+    }
+
+    audio?.addEventListener('ended', handleSongEnded)
+
+    return () => {
+      audio?.removeEventListener('ended', handleSongEnded)
+    }
+  }, [])
   
   return (
     <>

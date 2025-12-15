@@ -5,7 +5,7 @@ import type { Quote } from '../../types'
 export const runtime = 'nodejs'
 
 function pickRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)]
 }
 
 export async function GET(req: Request) {

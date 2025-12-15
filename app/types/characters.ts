@@ -8,5 +8,5 @@ export interface Quote {
   quote: string
   character: string
   image: string
-  characterDirection: 'Left' | 'Right';
+  characterDirection: 'Left' | 'Right'
 }

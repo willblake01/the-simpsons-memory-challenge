@@ -163,7 +163,7 @@ input[type=number] {
   padding: 1rem;
   border-radius: 1.563rem;
   min-height: 12.5rem;
-  min-width: 18.75rem;;
+  min-width: 18.75rem;
   width: 'max-content';
   background-color: #ffffff;
 }
