@@ -1,57 +1,55 @@
 'use client'
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Context, ContextType } from '../context'
 import { LargeButton } from './utils'
 
-const SongPlayer: React.FC = () => {
+interface SongPlayerProps {
+  themeSongRef: React.MutableRefObject<HTMLAudioElement | undefined>
+}
+
+const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
   const [playPauseButtonText, setPlayPauseButtonText] = useState<string>('Play Song')
-  const {
-    songIsPaused,
-    setSongIsPaused,
-    songIsPlaying,
-    setSongIsPlaying,
-    themeSongRef,
-  } = useContext(Context) as unknown as ContextType
+  const [isSongPaused, setIsSongPaused] = useState(false)
+  const [isSongPlaying, setIsSongPlaying] = useState(false)
 
   const playSong = (): void => {
-    if (!songIsPlaying) {
-      Promise.all([setSongIsPaused(false), setSongIsPlaying(true)]).then(() =>
+    if (!isSongPlaying) {
+      Promise.all([setIsSongPaused(false), setIsSongPlaying(true)]).then(() =>
         themeSongRef.current?.play()
       )
     }
   }
 
   const pauseSong = (): void => {
-    if (songIsPlaying) {
-      Promise.all([setSongIsPaused(true), setSongIsPlaying(false)]).then(() =>
+    if (isSongPlaying) {
+      Promise.all([setIsSongPaused(true), setIsSongPlaying(false)]).then(() =>
         themeSongRef.current?.pause()
       )
     }
   }
 
   const stopSong = useCallback((): void => {
-    Promise.all([setSongIsPaused(false), setSongIsPlaying(false)]).then(() =>
+    Promise.all([setIsSongPaused(false), setIsSongPlaying(false)]).then(() =>
       themeSongRef.current?.load()
     )
-  }, [setSongIsPaused, setSongIsPlaying, themeSongRef])
+  }, [setIsSongPaused, setIsSongPlaying, themeSongRef])
 
-  const handlePlayPauseActions: () => void = songIsPlaying && !songIsPaused ? pauseSong : playSong
+  const handlePlayPauseActions: () => void = isSongPlaying && !isSongPaused ? pauseSong : playSong
 
   useEffect(() => {
     stopSong()
-  }, [setSongIsPaused, setSongIsPlaying, themeSongRef, stopSong])
+  }, [setIsSongPaused, setIsSongPlaying, themeSongRef, stopSong])
 
   useEffect(() => {
-    const handleButtonText = (): void => songIsPlaying ? setPlayPauseButtonText('Pause Song') : setPlayPauseButtonText(songIsPaused ? 'Play Song' : 'Theme Song')
+    const handleButtonText = (): void => isSongPlaying ? setPlayPauseButtonText('Pause Song') : setPlayPauseButtonText(isSongPaused ? 'Play Song' : 'Theme Song')
 
     handleButtonText()
-  }, [songIsPlaying, songIsPaused])
+  }, [isSongPlaying, isSongPaused])
   
   return (
     <>
       {
-        songIsPlaying || songIsPaused ? (
+        isSongPlaying || isSongPaused ? (
           <div
             className={classNames(
               'align-center',

@@ -1,21 +1,21 @@
 'use client'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { Context, ContextType } from '../../context'
 import classNames from 'classnames'
+import { Context, ContextType } from '../../context'
+import { useLocalStorage } from '../../components/utils'
 import { Quote } from './components'
 import { HintsButtons } from './components'
 import LoadingSpinner from '../utils/LoadingSpinner'
 
 const Hints = () => {
     const {
-      displayAuthor,
-      setDisplayAuthor,
-      quoteData,
-      setQuoteData,
+      quote,
+      setQuote,
       setDisplayHints,
     } = useContext(Context) as unknown as ContextType
 
   const [isLoading, setIsLoading] = useState(false)
+  const [showAuthor, setShowAuthor] = useLocalStorage('showAuthor', false)
 
   const white = '#ffffff'
 
@@ -26,16 +26,16 @@ const Hints = () => {
   }
 
   const handleFetchQuote = useCallback(() => {
-    Promise.all([setIsLoading(true), setDisplayAuthor(false), fetchData()])
-  .then(data => setQuoteData(data[2]))
+    Promise.all([setIsLoading(true), setShowAuthor(false), fetchData()])
+  .then(data => setQuote(data[2]))
   .then(() => setIsLoading(false))
-  }, [setDisplayAuthor, setQuoteData])
+  }, [setShowAuthor, setQuote])
 
   useEffect(() => {
-    if (!quoteData) {
+    if (!quote) {
       handleFetchQuote()
     }
-  }, [handleFetchQuote, quoteData])
+  }, [handleFetchQuote, quote])
 
   return (
     <div className="hints">
@@ -60,12 +60,12 @@ const Hints = () => {
             visible={isLoading}
           />
             :
-          <Quote quoteData={quoteData} displayAuthor={displayAuthor} />
+          <Quote quoteData={quote} showAuthor={showAuthor} />
         }
         <HintsButtons
-            displayAuthor={displayAuthor}
+            showAuthor={showAuthor}
             handleFetchQuote={handleFetchQuote}
-            setDisplayAuthor={setDisplayAuthor}
+            setShowAuthor={setShowAuthor}
             setDisplayHints={setDisplayHints}
           />
       </div>

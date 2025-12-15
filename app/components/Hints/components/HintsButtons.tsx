@@ -3,16 +3,16 @@ import classNames from 'classnames'
 import { LargeButton } from '../../utils/Buttons'
 
 interface HintButtonsProps {
-  displayAuthor: boolean
-  handleFetchQuote: () => void
-  setDisplayAuthor: (value: boolean) => void
+  showAuthor: boolean
+  setShowAuthor: (value: boolean) => void
   setDisplayHints: (value: boolean) => void
+  handleFetchQuote: () => void
 }
 
 const HintButtons = ({
-  displayAuthor,
+  showAuthor,
   handleFetchQuote,
-  setDisplayAuthor,
+  setShowAuthor,
   setDisplayHints
 }: HintButtonsProps) => {
   return (
@@ -31,8 +31,8 @@ const HintButtons = ({
       />
       <LargeButton
         className="large-button"
-        onClick={() => setDisplayAuthor(!displayAuthor)}
-        text={displayAuthor ? 'Hide Author' : 'Show Author'}
+        onClick={() => setShowAuthor(!showAuthor)}
+        text={showAuthor ? 'Hide Author' : 'Show Author'}
       />
       <LargeButton
         className="large-button"

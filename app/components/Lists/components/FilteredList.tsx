@@ -1,11 +1,12 @@
 'use client'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { Context, ContextType } from '@/app/context'
+import { Character, CharacterList } from '@/app/types'
 
 const FilteredList = () => {
   const context = useContext(Context)
 
-  const rawList: string[] = useMemo(() => context?.rawList || [], [context?.rawList]) as unknown as ContextType['rawList']
+  const rawList: CharacterList = useMemo(() => context?.rawList || [], [context?.rawList]) as unknown as ContextType['rawList']
 
   const [familyMembers, setFamilyMembers] = useState<string[]>(context?.rawList || [])
 
@@ -22,11 +23,11 @@ const FilteredList = () => {
       'Snowball V'
     ]
 
-    const filteredCharacterInput: string[] = rawList
-      .filter((character: string) =>
-      theSimpsons.some((familyMember: string) => familyMember.includes(character))
+    const filteredCharacterInput: Character[] = rawList
+      .filter((character: Character) =>
+      theSimpsons.some((familyMember: Character) => familyMember.includes(character))
       )
-      .map((filteredCharacter: string) => filteredCharacter)
+      .map((filteredCharacter: Character) => filteredCharacter)
     setFamilyMembers(filteredCharacterInput)
   }, [rawList])
 

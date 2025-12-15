@@ -1,88 +1,59 @@
 'use client'
-import React, { createContext, ReactNode, useRef } from 'react'
+import React, { createContext, ReactNode } from 'react'
 import { useLocalStorage } from './components/utils'
-import themeSongMP3 from './public/audio/The_Simpsons_Theme_Song.mp3'
+import { Character, CharacterList, Quote } from './types'
 
 export interface ContextType {
   clock: number
   setClock: (value: number) => void
-  displayAuthor: boolean
-  setDisplayAuthor: (value: boolean) => void
   displayHints: boolean
   setDisplayHints: (value: boolean) => void
   goal: number
   setGoal: (value: number) => void
-  quoteData: {
-    quote: string
-    character: string
-    image: string
-  } | null
-  setQuoteData: (value: {
-    quote: string
-    character: string
-    image: string
-  } | null) => void
-  rawList: string[]
-  setRawList: (value: string[]) => void
+  quote: Quote | null
+  setQuote: (value: Quote | null) => void
+  rawList: CharacterList
+  setRawList: (value: Character[]) => void
   revisionsRemaining: number
   setRevisionsRemaining: (value: number) => void
   score: number
   setScore: (value: number) => void
-  songIsPlaying: boolean
-  setSongIsPlaying: (value: boolean) => void
-  songIsPaused: boolean
-  setSongIsPaused: (value: boolean) => void
-  themeSongRef: React.MutableRefObject<HTMLAudioElement | undefined>
 }
 
 export const Context = createContext<ContextType | null>(null)
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
-  const themeSongRef = useRef<HTMLAudioElement | undefined>(
-    typeof Audio !== "undefined" ? new Audio(themeSongMP3) : undefined
-  );
-
   const [clock, setClock] = useLocalStorage('clock', null)
-  const [displayAuthor, setDisplayAuthor] = useLocalStorage('displayAuthor', false)
   const [displayHints, setDisplayHints] = useLocalStorage('displayHints', false)
   const [goal, setGoal] = useLocalStorage('goal', null)
+  const [quote, setQuote] = useLocalStorage('quote', null)
   const [rawList, setRawList] = useLocalStorage('rawList', [])
   const [revisionsRemaining, setRevisionsRemaining] = useLocalStorage(
     'revisionsRemaining',
     null
   )
   const [score, setScore] = useLocalStorage('score', 0)
-  const [songIsPlaying, setSongIsPlaying] = useLocalStorage('songIsPlaying', false)
-  const [songIsPaused, setSongIsPaused] = useLocalStorage('songIsPaused', false)
-  const [quoteData, setQuoteData] = useLocalStorage('quoteData', null)
 
   const context = {
     clock,
     setClock,
-    displayAuthor,
-    setDisplayAuthor,
     displayHints,
     setDisplayHints,
     goal,
     setGoal,
-    quoteData,
-    setQuoteData,
+    quote,
+    setQuote,
     rawList,
     setRawList,
     revisionsRemaining,
     setRevisionsRemaining,
     score,
-    setScore,
-    songIsPlaying,
-    setSongIsPlaying,
-    songIsPaused,
-    setSongIsPaused,
-    themeSongRef,
+    setScore
   }
 
   return (
     <Context.Provider value={context}>
       {children}
     </Context.Provider>
-  );
+  )
 }

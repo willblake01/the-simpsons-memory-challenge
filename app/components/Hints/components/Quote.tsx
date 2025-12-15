@@ -1,17 +1,14 @@
 import React from 'react'
 import classNames from 'classnames'
 import { ImageTilt } from '@/app/components/utils/ImageTilt'
+import type { Quote } from '@/app/types'
 
 interface QuoteProps {
-  displayAuthor: boolean
-  quoteData: {
-    character: string
-    image: string
-    quote: string
-  } | null
+  showAuthor: boolean
+  quoteData:  Quote | null
 }
 
-const Quote = ({ displayAuthor, quoteData }: QuoteProps) => {
+const Quote = ({ showAuthor, quoteData }: QuoteProps) => {
   const { character = '', image = '', quote = '' } = quoteData || {}
 
   {
@@ -27,7 +24,7 @@ const Quote = ({ displayAuthor, quoteData }: QuoteProps) => {
           <br />
           <br />
           <cite>
-            {displayAuthor ? `-${character}` : '-Anonymous Character'}
+            {showAuthor ? `-${character}` : '-Anonymous Character'}
           </cite>
         </blockquote>
       </div>

@@ -1,11 +1,12 @@
 'use client'
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
 import { Context, ContextType } from '../context'
 import { Constraints, Hints, Lists, SongPlayer } from '../components'
 import { LargeButton } from '../components/utils'
 import { AddListItem } from '../components/Lists/components'
+import themeSongMP3 from '../public/audio/The_Simpsons_Theme_Song.mp3'
 
 const Challenge = () => {
   const router = useRouter()
@@ -16,10 +17,13 @@ const Challenge = () => {
     displayHints,
     setDisplayHints,
     goal,
-    setQuoteData,
-    setScore,
-    themeSongRef
+    setQuote,
+    setScore
   } = useContext(Context) as unknown as ContextType
+
+  const themeSongRef = useRef<HTMLAudioElement | undefined>(
+    typeof Audio !== "undefined" ? new Audio(themeSongMP3) : undefined
+  )
 
   const challengeActive = clock > 0
 
@@ -28,10 +32,10 @@ const Challenge = () => {
       themeSongRef.current?.load(),
       setScore(0),
       setClock(0),
-      setQuoteData(null),
+      setQuote(null),
       setDisplayHints(false)
     ]).then(() => router.push('/score'))
-  }, [router, setClock, setDisplayHints, setQuoteData, setScore, themeSongRef])
+  }, [router, setDisplayHints, setQuote, setScore, themeSongRef, setClock])
 
   useEffect(() => {
     if (goal && !challengeActive) {
@@ -57,7 +61,7 @@ const Challenge = () => {
           onClick={() => setDisplayHints(true)}
         />
       )}
-      <SongPlayer />
+      <SongPlayer themeSongRef={themeSongRef} />
       <Lists />
       <AddListItem />
       <LargeButton
