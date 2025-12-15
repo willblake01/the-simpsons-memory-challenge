@@ -2,10 +2,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Context, ContextType } from '../../context'
-import { useLocalStorage } from '../../components/utils'
-import { Quote } from './components'
-import { HintsButtons } from './components'
-import LoadingSpinner from '../utils/LoadingSpinner'
+import { LoadingSpinner, useLocalStorage } from '../../components/utils'
+import { HintsButtons, Quote } from './components'
 
 const Hints = () => {
     const {
