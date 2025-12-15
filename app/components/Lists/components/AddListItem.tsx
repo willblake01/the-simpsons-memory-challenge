@@ -15,11 +15,6 @@ const AddListItem = () => {
 
   const [guess, setGuess] = useState('')
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target as HTMLInputElement
-    setGuess(value)
-  }
-
   const normalizeGuess = (guess: string) => {
     return guess
       .trim()
@@ -63,10 +58,14 @@ const AddListItem = () => {
     }
   }
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target as HTMLInputElement
+    setGuess(value)
+  }
+
+  const handleSubmit = () => {
     if (guess) {
       Promise.all([
-        e.preventDefault(),
         validateGuess(guess),
         setGuess('')
       ]).then(
@@ -79,20 +78,23 @@ const AddListItem = () => {
   }
 
   return (
-    <form className="form">
+    <form className='form' onSubmit={(e) => {
+      e.preventDefault()
+      handleSubmit()
+    }}>
       <h1>Add a Simpsons Character to the List</h1>
-      <div className="flex-row">
+      <div className='flex-row'>
         <UserInput
-          type="text"
-          pattern="[A-Za-z]*"
-          inputMode="text"
-          placeholder="Character Name"
-          id="add-item-id"
+          type='text'
+          pattern='[A-Za-z]+(?: [A-Za-z]+)*'
+          inputMode='text'
+          placeholder='Character Name'
+          id='add-item-id'
           onChange={handleInput}
         />
         <LargeButton
-          text="Add"
-          className="large-button"
+          text='Add'
+          className='large-button'
           onClick={handleSubmit}
         />
       </div>

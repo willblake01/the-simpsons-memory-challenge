@@ -2,7 +2,7 @@ import React from 'react'
 
 interface UserInputProps {
   type: string
-  inputMode: 'search' | 'email' | 'tel' | 'text' | 'url' | 'none' | 'numeric' | 'decimal' | undefined
+  inputMode: 'text' | undefined
   placeholder: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   pattern: string
