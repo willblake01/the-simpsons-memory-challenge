@@ -2,7 +2,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { Context, ContextType } from '@/app/context'
 import type { Character } from '@/app/types'
-import { THE_SIMPSONS_FAMILY } from '@/app/constants'
 
 const FilteredList = () => {
   const context = useContext(Context)
@@ -13,9 +12,7 @@ const FilteredList = () => {
 
   useEffect(() => {
     const filteredCharacterInput: Character[] = rawList
-      .filter((character: Character) =>
-      THE_SIMPSONS_FAMILY.some((familyMember: Character) => familyMember.name === character.name)
-      )
+      .filter((character: Character) => character.isSimpson)
       .map((filteredCharacter: Character) => filteredCharacter)
     setFamilyMembers(filteredCharacterInput)
   }, [rawList])

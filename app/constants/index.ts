@@ -1,1 +1,1 @@
-export { ALL_CHARACTERS, THE_SIMPSONS_FAMILY } from './characters'
+export { ALL_CHARACTERS } from './characters'

@@ -11,12 +11,12 @@ const slugify = (s: string) =>
     .replace(/^-+|-+$/g, '')
 
 export const ALL_CHARACTERS: Character[] = [
-  { id: slugify('Homer Simpson'), name: 'Homer Simpson', aliases: ['Homer'] },
-  { id: slugify('Marge Simpson'), name: 'Marge Simpson', aliases: ['Marge'] },
-  { id: slugify('Bart Simpson'), name: 'Bart Simpson', aliases: ['Bart'] },
-  { id: slugify('Lisa Simpson'), name: 'Lisa Simpson', aliases: ['Lisa'] },
-  { id: slugify('Maggie Simpson'), name: 'Maggie Simpson', aliases: ['Maggie'] },
-  { id: slugify('Abraham Simpson'), name: 'Abraham Simpson', aliases: ['Abe Simpson'] },
+  { id: slugify('Homer Simpson'), name: 'Homer Simpson', aliases: ['Homer'], isSimpson: true },
+  { id: slugify('Marge Simpson'), name: 'Marge Simpson', aliases: ['Marge'], isSimpson: true },
+  { id: slugify('Bart Simpson'), name: 'Bart Simpson', aliases: ['Bart'], isSimpson: true },
+  { id: slugify('Lisa Simpson'), name: 'Lisa Simpson', aliases: ['Lisa'], isSimpson: true },
+  { id: slugify('Maggie Simpson'), name: 'Maggie Simpson', aliases: ['Maggie'], isSimpson: true },
+  { id: slugify('Abraham Simpson'), name: 'Abraham Simpson', aliases: ['Abe Simpson'], isSimpson: true },
   { id: slugify("Santa's Little Helper"), name: "Santa's Little Helper" },
   { id: slugify('Snowball II'), name: 'Snowball II', aliases: ['Snowball', 'Snowball 2'] },
   { id: slugify('Snowball V'), name: 'Snowball V', aliases: ['Snowball 5'] },
@@ -91,16 +91,4 @@ export const ALL_CHARACTERS: Character[] = [
   { id: slugify('Kirk Van Houten'), name: 'Kirk Van Houten' },
   { id: slugify('Lunchlady Doris'), name: 'Lunchlady Doris', aliases: ['Doris'] },
   { id: slugify('Mayor Quimby'), name: 'Mayor Quimby', aliases: ['Joe Quimby'] }
-]
-
-export const THE_SIMPSONS_FAMILY: Character[] = [
-  { id: slugify('Homer Simpson'), name: 'Homer Simpson' },
-  { id: slugify('Marge Simpson'), name: 'Marge Simpson' },
-  { id: slugify('Bart Simpson'), name: 'Bart Simpson' },
-  { id: slugify('Lisa Simpson'), name: 'Lisa Simpson' },
-  { id: slugify('Maggie Simpson'), name: 'Maggie Simpson' },
-  { id: slugify('Abe Simpson'), name: 'Abe Simpson', aliases: ['Abraham Simpson'] },
-  { id: slugify("Santa's Little Helper"), name: "Santa's Little Helper" },
-  { id: slugify('Snowball II'), name: 'Snowball II', aliases: ['Snowball 2'] },
-  { id: slugify('Snowball V'), name: 'Snowball V', aliases: ['Snowball 5'] }
 ]
