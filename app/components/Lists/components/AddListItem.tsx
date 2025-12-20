@@ -22,7 +22,7 @@ const AddListItem = () => {
       .normalize('NFKD')
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/&/g, 'and')
-      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/[^a-z0-9']+/g, ' ')
       .replace(/\s+/g, ' ')
       .trim()
   }
@@ -88,7 +88,7 @@ const AddListItem = () => {
       <div className='flex-row'>
         <UserInput
           type='text'
-          pattern='[A-Za-z]+(?: [A-Za-z]+)*'
+          pattern="[A-Za-z']+(?: [A-Za-z']+)*"
           inputMode='text'
           placeholder='Character Name'
           id='add-item-id'
