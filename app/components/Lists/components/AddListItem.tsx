@@ -84,7 +84,7 @@ const AddListItem = () => {
       e.preventDefault()
       handleSubmit()
     }}>
-      <h1>Add a Simpsons Character to the List</h1>
+      <h1>Add a Character to the List</h1>
       <div className='flex-row'>
         <UserInput
           type='text'
