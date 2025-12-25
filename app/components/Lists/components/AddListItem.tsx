@@ -84,13 +84,13 @@ const AddListItem = () => {
       e.preventDefault()
       handleSubmit()
     }}>
-      <h1>Add a Character to the List</h1>
+      <h1>Add Character</h1>
       <div className='flex-row'>
         <UserInput
           type='text'
           pattern="[A-Za-z']+(?: [A-Za-z']+)*"
           inputMode='text'
-          placeholder='Character Name'
+          placeholder='Name'
           id='add-item-id'
           onChange={handleInput}
         />
