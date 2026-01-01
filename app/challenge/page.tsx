@@ -65,7 +65,7 @@ const Challenge = () => {
       <Lists />
       <AddListItem />
       <LargeButton
-        text="Submit"
+        text="End Game"
         className="large-button"
         onClick={endChallenge}
       />
