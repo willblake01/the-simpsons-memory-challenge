@@ -12,7 +12,17 @@ interface ImageProps {
 
 const ImageTilt = ({ alt, height, src, width }: ImageProps) => (
   <Tilt>
-    {src && <Image alt={alt} height={height} priority src={src} width={width} />}
+    {
+      src && 
+        <Image
+          alt={alt}
+          height={height}
+          priority
+          src={src}
+          unoptimized
+          width={width}
+        />
+    }
   </Tilt>
 )
 

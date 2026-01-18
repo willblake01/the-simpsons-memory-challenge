@@ -1,38 +1,15 @@
-interface WebpackConfig {
-  module: {
-    rules: Array<{
-      test: RegExp;
-      use: Array<{
-        loader: string;
-        options: {
-          name: string;
-        };
-      }>;
-    }>;
-  };
-}
+/** @type {import('next').NextConfig} */
 
-module.exports = {
-  webpack(config: WebpackConfig): WebpackConfig {
-    config.module.rules.push({
-      test: /\.(ogg|mp3|wav|mpe?g)$/i,
-      use: [
-        {
-          loader: 'url-loader',
-          options: {
-            name: '[name]-[hash].[ext]',
-          },
-        },
-      ],
-    });
-    return config;
-  },
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.glitch.com',
+        hostname: 'res.cloudinary.com',
       },
+      { protocol: "https", hostname: "cdn.glitch.com" },
     ],
   },
 };
+
+module.exports = nextConfig;

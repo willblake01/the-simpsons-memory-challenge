@@ -5,13 +5,13 @@
 }
 
 body {
-  background-image: url("./public/images/morocco-blue.png");
+  background-image: url("/images/morocco-blue.png");
   font-family: sans-serif;
 }
 
 @font-face {
   font-family: "Simpsons";
-  src: local("Simpsons"), url(./public/fonts/Simpsons/akbar.ttf) format("truetype");
+  src: local("Simpsons"), url(/fonts/Simpsons/akbar.ttf) format("truetype");
 }
 
 h1 {

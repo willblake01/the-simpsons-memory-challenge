@@ -5,9 +5,9 @@ import classNames from 'classnames'
 import { StaticImageData } from 'next/image'
 import { Context, ContextType } from '../context'
 import { ImageTilt, LargeButton } from '../components/utils'
-import lisa from '../public/images/lisa.png'
-import moe from '../public/images/moe.png'
-import nelson from '../public/images/nelson.png'
+import lisa from '@/public/images/lisa.png'
+import moe from '@/public/images/moe.png'
+import nelson from '@/public/images/nelson.png'
 
 const Score = () => {
   const router = useRouter()
