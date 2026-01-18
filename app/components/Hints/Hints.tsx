@@ -36,7 +36,7 @@ const Hints = () => {
   }, [handleFetchQuote, quote])
 
   return (
-    <div className="hints">
+    <div className='hints'>
       <div
         className={classNames(
           'flex-column',
@@ -48,13 +48,13 @@ const Hints = () => {
           isLoading
             ?
           <LoadingSpinner
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
+            height='80'
+            width='80'
+            ariaLabel='dna-loading'
             wrapperStyle={{ height: '25rem' }}
-            wrapperClass="dna-wrapper"
+            wrapperClass='dna-wrapper'
             ballColors={[white, white, white]}
-            backgroundColor="orange"
+            backgroundColor='orange'
             visible={isLoading}
           />
             :

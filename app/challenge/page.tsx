@@ -4,9 +4,8 @@ import { useRouter } from 'next/navigation'
 import classNames from 'classnames'
 import { Context, ContextType } from '../context'
 import { LargeButton } from '../components/utils'
-import { GameStatus, Hints, Lists, SongPlayer } from '../components'
+import { GameStatus, Hints, Lists, ThemeSongPlayer } from '../components'
 import { AddListItem } from '../components/Lists/components'
-import themeSongMP3 from '../public/audio/The_Simpsons_Theme_Song.mp3'
 
 const Challenge = () => {
   const router = useRouter()
@@ -21,9 +20,9 @@ const Challenge = () => {
     setScore
   } = useContext(Context) as unknown as ContextType
 
-  const themeSongRef = useRef<HTMLAudioElement | undefined>(
-    typeof Audio !== "undefined" ? new Audio(themeSongMP3) : undefined
-  )
+  const THEME_SONG_SRC = '/audio/The_Simpsons_Theme_Song.mp3';
+
+  const themeSongRef = useRef<HTMLAudioElement | null>(null);
 
   const challengeActive = clock > 0
 
@@ -36,6 +35,16 @@ const Challenge = () => {
       setDisplayHints(false)
     ]).then(() => router.push('/score'))
   }, [router, setDisplayHints, setQuote, setScore, themeSongRef, setClock])
+
+  useEffect(() => {
+    themeSongRef.current = new Audio(THEME_SONG_SRC);
+    themeSongRef.current.preload = 'auto';
+
+    return () => {
+      themeSongRef.current?.pause();
+      themeSongRef.current = null;
+    }
+  }, [])
 
   useEffect(() => {
     if (goal && !challengeActive) {
@@ -56,17 +65,17 @@ const Challenge = () => {
         <Hints />
       ) : (
         <LargeButton
-          text="Show Hints"
-          className="large-button"
+          text='Show Hints'
+          className='large-button'
           onClick={() => setDisplayHints(true)}
         />
       )}
-      <SongPlayer themeSongRef={themeSongRef} />
+      <ThemeSongPlayer themeSongRef={themeSongRef} />
       <Lists />
       <AddListItem />
       <LargeButton
-        text="End Game"
-        className="large-button"
+        text='End Game'
+        className='large-button'
         onClick={endChallenge}
       />
     </div>

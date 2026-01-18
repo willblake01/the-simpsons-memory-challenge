@@ -3,16 +3,16 @@ import React, { useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { LargeButton } from './utils'
 
-interface SongPlayerProps {
-  themeSongRef: React.MutableRefObject<HTMLAudioElement | undefined>
-}
+type ThemeSongPlayerProps = {
+  themeSongRef: React.MutableRefObject<HTMLAudioElement | null>;
+};
 
-const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
+const ThemeSongPlayer: React.FC<ThemeSongPlayerProps> = ({ themeSongRef }) => {
   const [playPauseButtonText, setPlayPauseButtonText] = useState<string>('Play Song')
   const [isSongPaused, setIsSongPaused] = useState(false)
   const [isSongPlaying, setIsSongPlaying] = useState(false)
 
-  const playSong = (): void => {
+  const play = (): void => {
     if (!isSongPlaying) {
       Promise.all([setIsSongPaused(false), setIsSongPlaying(true)]).then(() =>
         themeSongRef.current?.play()
@@ -20,7 +20,7 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
     }
   }
 
-  const pauseSong = (): void => {
+  const pause = (): void => {
     if (isSongPlaying) {
       Promise.all([setIsSongPaused(true), setIsSongPlaying(false)]).then(() =>
         themeSongRef.current?.pause()
@@ -28,13 +28,13 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
     }
   }
 
-  const stopSong = useCallback((): void => {
+  const stop = useCallback((): void => {
     Promise.all([setIsSongPaused(false), setIsSongPlaying(false)]).then(() =>
       themeSongRef.current?.load()
     )
   }, [setIsSongPaused, setIsSongPlaying, themeSongRef])
 
-  const handlePlayPauseActions: () => void = isSongPlaying && !isSongPaused ? pauseSong : playSong
+  const handlePlayPauseActions: () => void = isSongPlaying && !isSongPaused ? pause : play
 
   useEffect(() => {
     const handleButtonText = (): void => isSongPlaying ? setPlayPauseButtonText('Pause Song') : setPlayPauseButtonText(isSongPaused ? 'Play Song' : 'Theme Song')
@@ -43,23 +43,23 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
   }, [isSongPlaying, isSongPaused])
 
   useEffect(() => {
-    stopSong()
-  }, [setIsSongPaused, setIsSongPlaying, themeSongRef, stopSong])
+    stop()
+  }, [setIsSongPaused, setIsSongPlaying, themeSongRef, stop])
 
   useEffect(() => {
     const audio = themeSongRef.current
     if (!audio) return
 
-    const handleSongEnded = () => {
+    const handleEndOfSong = () => {
       setIsSongPlaying(false)
     }
 
-    audio?.addEventListener('ended', handleSongEnded)
+    audio?.addEventListener('ended', handleEndOfSong)
 
     return () => {
-      audio?.removeEventListener('ended', handleSongEnded)
+      audio?.removeEventListener('ended', handleEndOfSong)
     }
-  }, [])
+  }, [themeSongRef])
   
   return (
     <>
@@ -74,13 +74,13 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
             )}
           >
             <LargeButton
-              className="large-button"
+              className='large-button'
               onClick={handlePlayPauseActions}
               text={playPauseButtonText}
             />
             <LargeButton
-              className="large-button"
-              onClick={stopSong}
+              className='large-button'
+              onClick={stop}
               text={'Stop Song'}
             />
           </div>
@@ -94,7 +94,7 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
             )}
           >
             <LargeButton
-              className="large-button"
+              className='large-button'
               onClick={handlePlayPauseActions}
               text={playPauseButtonText}
             />
@@ -105,4 +105,4 @@ const SongPlayer: React.FC<SongPlayerProps> = ({ themeSongRef }) => {
   )
 }
 
-export default SongPlayer
+export default ThemeSongPlayer
