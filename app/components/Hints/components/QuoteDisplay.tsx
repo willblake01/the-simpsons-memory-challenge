@@ -16,7 +16,7 @@ const QuoteDisplay = ({ showAuthor, quoteData }: QuoteProps) => {
       className={classNames('flex-column', 'justify-center', 'align-center', 'width-max-content')}
     >
       <div className={classNames('margin-bottom-20', 'width-max-content')}>
-        <ImageTilt alt={character} height={460} src={image} width={320} />
+        <ImageTilt alt={character} src={image} />
       </div>
       <blockquote className={classNames('quote')}>
         <q>{quote}</q>

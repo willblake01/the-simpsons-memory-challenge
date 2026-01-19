@@ -1,28 +1,33 @@
 import React from 'react'
-import { StaticImageData } from 'next/image'
 import Image from 'next/image'
 import Tilt from './components/Tilt'
 
 interface ImageProps {
   alt: string
-  height?: number
-  width?: number
-  src: StaticImageData | string | null
+  src: string | null
 }
 
-const ImageTilt = ({ alt, height, src, width }: ImageProps) => (
+const ImageTilt = ({ alt, src }: ImageProps) => (
   <Tilt>
-    {
-      src && 
+    {src && (
+      <div
+        style={{
+          position: 'relative',
+          width: 364,
+          height: 448
+        }}
+      >
         <Image
           alt={alt}
-          height={height}
-          priority
           src={src}
+          fill
           unoptimized
-          width={width}
+          priority
+          sizes="520px"
+          style={{ objectFit: 'contain' }}
         />
-    }
+      </div>
+    )}
   </Tilt>
 )
 
