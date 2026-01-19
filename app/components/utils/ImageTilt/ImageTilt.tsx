@@ -1,10 +1,10 @@
 import React from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Tilt from './components/Tilt'
 
 interface ImageProps {
   alt: string
-  src: string | null
+  src: StaticImageData | null
 }
 
 const ImageTilt = ({ alt, src }: ImageProps) => (
