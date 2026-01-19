@@ -4,7 +4,7 @@ import Tilt from './components/Tilt'
 
 interface ImageProps {
   alt: string
-  src: StaticImageData | null
+  src: StaticImageData | string | null
 }
 
 const ImageTilt = ({ alt, src }: ImageProps) => (
