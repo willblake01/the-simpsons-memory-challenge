@@ -19,12 +19,12 @@ const QuoteDisplay = ({ showAuthor, quoteData }: QuoteProps) => {
         <ImageTilt alt={character} src={image} />
       </div>
       <blockquote className={classNames('quote')}>
-        <q>{quote}</q>
-        <br />
-        <br />
         <cite>
-          {showAuthor ? `-${character}` : null}
+          <q>{quote}</q>
         </cite>
+        <br />
+        <br />
+        {showAuthor ? `-${character}` : null}
       </blockquote>
     </div>
   )

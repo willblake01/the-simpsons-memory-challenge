@@ -20,9 +20,9 @@ const Challenge = () => {
     setScore
   } = useContext(Context) as unknown as ContextType
 
-  const THEME_SONG_SRC = '/audio/The_Simpsons_Theme_Song.mp3';
+  const THEME_SONG_SRC = '/audio/theme_song.mp3'
 
-  const themeSongRef = useRef<HTMLAudioElement | null>(null);
+  const themeSongRef = useRef<HTMLAudioElement | null>(null)
 
   const challengeActive = clock > 0
 
@@ -37,12 +37,12 @@ const Challenge = () => {
   }, [router, setDisplayHints, setQuote, setScore, themeSongRef, setClock])
 
   useEffect(() => {
-    themeSongRef.current = new Audio(THEME_SONG_SRC);
-    themeSongRef.current.preload = 'auto';
+    themeSongRef.current = new Audio(THEME_SONG_SRC)
+    themeSongRef.current.preload = 'auto'
 
     return () => {
-      themeSongRef.current?.pause();
-      themeSongRef.current = null;
+      themeSongRef.current?.pause()
+      themeSongRef.current = null
     }
   }, [])
 

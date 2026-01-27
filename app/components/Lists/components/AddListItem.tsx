@@ -1,11 +1,15 @@
 'use client'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Context, ContextType } from '@/app/context'
 import { Alert, LargeButton, UserInput } from '../../utils'
 import { ALL_CHARACTERS } from '@/app/constants'
 
 const AddListItem = () => {
   const context = useContext(Context)
+
+  const SOUND_EFFECT_SRC = '/audio/doh.mp3'
+
+  const soundEffectRef = useRef<HTMLAudioElement | null>(null)
 
   if (!context) {
     throw new Error('Context must be used within a Provider')
@@ -27,9 +31,19 @@ const AddListItem = () => {
       .trim()
   }
 
+  const playErrorSound = () => {
+    const audio = soundEffectRef.current
+    if (!audio) return
+
+    audio.currentTime = 0
+    audio.play().catch(() => {
+      console.log('Something went wrong with audio')
+    })
+  }
+
   const validateGuess = (guess: string) => {
     const normalized = normalizeGuess(guess)
-    const alreadyAdded = rawList.some(character => character.name === normalized || character.aliases?.includes(normalized))
+    const alreadyAdded = rawList.some(character => character.name.toLowerCase() === normalized || character.aliases?.some(alias => alias.toLowerCase() === normalized))
 
     const isSimpsonsCharacter = ALL_CHARACTERS.some(({ name, aliases }) => {
       const namesToMatch = [name, ...(aliases ?? [])].map(normalizeGuess)
@@ -38,11 +52,15 @@ const AddListItem = () => {
     })
 
     if (alreadyAdded) {
+      playErrorSound()
+
       Alert({
         title: 'Duplicate Error',
         text: `${guess} already added, please add a different character.`
       })
     } else if (!isSimpsonsCharacter) {
+      playErrorSound()
+
       Alert({
         title: 'Validation Error',
         text: `${guess} is not a Simpsons character, please add a Simpsons character.`
@@ -78,6 +96,16 @@ const AddListItem = () => {
       )
     }
   }
+
+  useEffect(() => {
+    soundEffectRef.current = new Audio(SOUND_EFFECT_SRC)
+    soundEffectRef.current.preload = 'auto'
+
+    return () => {
+      soundEffectRef.current?.pause()
+      soundEffectRef.current = null
+    }
+  }, [])
 
   return (
     <form className='form' onSubmit={(e) => {
