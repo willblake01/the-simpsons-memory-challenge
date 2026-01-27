@@ -19,6 +19,17 @@ const AddListItem = () => {
 
   const [guess, setGuess] = useState('')
 
+  useEffect(() => {
+    soundEffectRef.current = new Audio(SOUND_EFFECT_SRC)
+    soundEffectRef.current.preload = 'auto'
+    soundEffectRef.current.volume = 0.5
+
+    return () => {
+      soundEffectRef.current?.pause()
+      soundEffectRef.current = null
+    }
+  }, [])
+
   const normalizeGuess = (guess: string) => {
     return guess
       .trim()
@@ -84,28 +95,14 @@ const AddListItem = () => {
   }
 
   const handleSubmit = () => {
-    if (guess) {
-      Promise.all([
-        validateGuess(guess),
-        setGuess('')
-      ]).then(
-        () =>
-          ((document.getElementById(
-            'add-item-id'
-          ) as HTMLInputElement).value = '')
-      )
-    }
+    if (!guess) return
+
+    validateGuess(guess)
+    setGuess('')
+
+    const input = document.getElementById('add-item-id') as HTMLInputElement
+    if (input) input.value = ''
   }
-
-  useEffect(() => {
-    soundEffectRef.current = new Audio(SOUND_EFFECT_SRC)
-    soundEffectRef.current.preload = 'auto'
-
-    return () => {
-      soundEffectRef.current?.pause()
-      soundEffectRef.current = null
-    }
-  }, [])
 
   return (
     <form className='form' onSubmit={(e) => {
