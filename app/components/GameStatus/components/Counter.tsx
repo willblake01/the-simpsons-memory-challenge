@@ -24,12 +24,12 @@ const Counter = () => {
   return (
     <div className="flex-row">
       <LargeButton
-        text="Decrement"
+        text="-"
         className="large-button"
         onClick={decrement}
       />
       <LargeButton
-        text="Increment"
+        text="+"
         className="large-button"
         onClick={increment}
       />

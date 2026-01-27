@@ -57,10 +57,18 @@ const Challenge = () => {
       className={classNames(
         'flex-column',
         'align-center',
-        'margin-bottom-60'
+        'margin-bottom-60',
       )}
     >
-      <GameStatus />
+      <div
+        className={classNames(
+          'game-status',
+          'flex',
+          'space-between'
+        )}
+      >
+        <GameStatus />
+      </div>
       {displayHints ? (
         <Hints />
       ) : (
@@ -71,7 +79,13 @@ const Challenge = () => {
         />
       )}
       <ThemeSongPlayer themeSongRef={themeSongRef} />
-      <Lists />
+      <div className={classNames(
+        'lists',
+        'flex',
+        'space-between'
+      )}>
+        <Lists />
+      </div>
       <AddListItem />
       <LargeButton
         text='End Game'

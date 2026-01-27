@@ -30,6 +30,7 @@
       line-height: 1.5;
       border-radius: 0.3rem;
       border: 0.063rem solid transparent;
+      min-width: 20rem;
     }
   
     button {
@@ -57,170 +58,167 @@
 
 @layer components {
   .flex-column {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .flex-row {
-      display: flex;
-      flex-direction: row;
-    }
-  
-    .justify-center {
-      justify-content: center;
-    }
-  
-    .align-center {
-      align-items: center;
-    }
-  
-    .align-start {
-      align-items: start;
-    }
-  
-    .margin-bottom-20 {
-      margin-bottom: 1.25rem;
-    }
-  
-    .margin-bottom-60 {
-      margin-bottom: 3.75rem;
-    }
-  
-    .space-around {
-      justify-content: space-around;
-    }
-  
-    .space-between {
-      justify-content: space-between;
-    }
-  
-    .width-max-content {
-      width: max-content;
-    }
-  
-    .large-button {
-      margin: 1.25rem 0.3125rem 1.25rem 0.3125rem;
-      padding: 0.5rem 1rem;
-      font-size: 1.25rem;
-      border-radius: 0.3rem;
-      display: inline-block;
-      font-weight: 400;
-      line-height: 1.5;
-      text-align: center;
-      text-decoration: none;
-      vertical-align: middle;
-      background-color: #ffffff;
-      color: #FFA500;
-      z-index: 99;
-    }
-  
-    .small-button {
-      margin: 0 0 0 0.25rem;
-      padding: 0.063rem 0.25rem;
-      border-radius: 10.5rem;
-      background-color: #FFA500;
-      color: #ffffff;
-    }
-  
-    .submit-button {
-      background-color: #ffffff;
-      color: #FFA500;
-    }
-  
-    .header {
-      margin: 3rem 1.5rem 1.5rem 1.5rem;
-      font-family: Simpsons;
-      font-size: 5rem;
-    }
-  
-    .quote {
-      font-family: "Simpsons";
-      font-size: 1.5rem;
-      max-width: 40rem;
-      border-radius: 1.563rem;
-      padding: 1.25rem;
-      background-color: #ffffff;
-      opacity: 0.75;
-    }
-  
-    .form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 1.25rem;
-      padding: 1.25rem;
-      border-radius: 1.563rem;
-      background-color: #FFA500;
-      color: #ffffff;
-      max-width: 40em;
-    }
-  
-    .increment-decrement-button {
-      background-color: #FFA500;
-      color: #ffffff;
-    }
-  
-    .list {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      margin: 2.5rem 0.625rem 0.625rem 0.625rem;
-      padding: 1rem;
-      border-radius: 1.563rem;
-      min-height: 12.5rem;
-      min-width: 18.75rem;
-      width: max-content;
-      background-color: #ffffff;
-    }
-  
-    .list h2 {
-      align-self: center;
-      margin-bottom: 0.5rem;
-    }
-  
-    .count {
-      margin: 1.5rem;
-      font-size: 3.75rem;
-    }
-  
-    .game-status {
-      position: fixed;
-      padding: 1.25rem 18.75rem 0 18.75rem;
-      align-self: start;
-      width: 100%;
-      z-index: 2;
-    }
-  
-    .hints {
-      position: relative;
-      z-index: 3;
-    }
+    display: flex;
+    flex-direction: column;
+  }
 
-    .quote-card {
-      background: linear-gradient(180deg,
-          rgba(255, 255, 255, 0.06),
-          rgba(255, 255, 255, 0.02));
-      backdrop-filter: blur(8px);
-      border-radius: 16px;
-      padding: 24px 28px;
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      animation: riseFade 300ms ease-out;
-    }
-  
-    .lists {
-      position: absolute;
-      padding: 0 5rem 0 5rem;
-      top: 21.25rem;
-      align-self: start;
-      width: 100%;
-      z-index: -1;
-    }
-  
-    .clock-pulse {
-      animation: clockPulse 0.9s ease-in-out infinite;
-    }
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .align-center {
+    align-items: center;
+  }
+
+  .align-start {
+    align-items: start;
+  }
+
+  .margin-bottom-20 {
+    margin-bottom: 1.25rem;
+  }
+
+  .margin-bottom-60 {
+    margin-bottom: 3.75rem;
+  }
+
+  .space-around {
+    justify-content: space-around;
+  }
+
+  .space-between {
+    justify-content: space-between;
+  }
+
+  .width-max-content {
+    width: max-content;
+  }
+
+  .large-button {
+    margin: 1.25rem 0.3125rem 1.25rem 0.3125rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    background-color: #ffffff;
+    color: #FFA500;
+    z-index: 99;
+  }
+
+  .small-button {
+    margin: 0 0 0 0.25rem;
+    padding: 0.063rem 0.25rem;
+    border-radius: 10.5rem;
+    background-color: #FFA500;
+    color: #ffffff;
+  }
+
+  .submit-button {
+    background-color: #ffffff;
+    color: #FFA500;
+  }
+
+  .header {
+    margin: 3rem 1.5rem 1.5rem 1.5rem;
+    font-family: Simpsons;
+    font-size: 5rem;
+  }
+
+  .quote {
+    font-family: "Simpsons";
+    font-size: 1.5rem;
+    max-width: 40rem;
+    border-radius: 1.563rem;
+    padding: 1.25rem;
+    background-color: #ffffff;
+    opacity: 0.75;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.25rem;
+    padding: 1.25rem;
+    border-radius: 1.563rem;
+    background-color: #FFA500;
+    color: #ffffff;
+    max-width: 40em;
+  }
+
+  .increment-decrement-button {
+    background-color: #FFA500;
+    color: #ffffff;
+  }
+
+  .lists {
+    position: absolute;
+    padding: 8rem 7rem;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 1.563rem;
+    min-height: 12.5rem;
+    min-width: 18.75rem;
+    width: max-content;
+    background-color: #ffffff;
+  }
+
+  .list h2 {
+    align-self: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .count {
+    margin: 1.5rem;
+    font-size: 3.75rem;
+  }
+
+  .game-status {
+    position: fixed;
+    padding: 0 14rem 0 14rem;
+    align-self: start;
+    width: 100%;
+    z-index: 99;
+  }
+
+  .hints {
+    position: relative;
+    z-index: 3;
+  }
+
+  .quote-card {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    animation: riseFade 300ms ease-out;
+  }
+
+  .clock-pulse {
+    animation: clockPulse 0.9s ease-in-out infinite;
+  }
 }
 
 @keyframes clockPulse {
