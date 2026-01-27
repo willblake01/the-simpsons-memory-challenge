@@ -13,7 +13,7 @@ const QuoteDisplay = ({ showAuthor, quoteData }: QuoteProps) => {
 
   return quoteData && (
     <div
-      className={classNames('flex-column', 'justify-center', 'align-center', 'width-max-content')}
+      className={classNames('quote-card', 'flex-column', 'justify-center', 'align-center', 'width-max-content')}
     >
       <div className={classNames('margin-bottom-20', 'width-max-content')}>
         <ImageTilt alt={character} src={image} />
