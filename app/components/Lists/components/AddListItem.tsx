@@ -28,7 +28,7 @@ const AddListItem = () => {
       soundEffectRef.current?.pause()
       soundEffectRef.current = null
     }
-  }, [])
+  }, [soundEffectRef])
 
   const normalizeGuess = (guess: string) => {
     return guess
