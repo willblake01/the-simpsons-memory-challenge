@@ -165,7 +165,7 @@
     position: absolute;
     padding: 8rem 7rem;
     width: 100%;
-    z-index: -1;
+    z-index: -2;
   }
 
   .list {
@@ -195,7 +195,7 @@
     padding: 0 14rem 0 14rem;
     align-self: start;
     width: 100%;
-    z-index: 99;
+    z-index: -1;
   }
 
   .hints {
