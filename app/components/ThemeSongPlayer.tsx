@@ -50,17 +50,17 @@ const ThemeSongPlayer: React.FC<ThemeSongPlayerProps> = ({ themeSongRef }) => {
     const audio = themeSongRef.current
     if (!audio) return
 
-    const handleEndOfSong = () => {
-      setIsSongPlaying(false)
+    const handleAudioEnded = () => {
+      stop();
     }
 
-    audio?.addEventListener('ended', handleEndOfSong)
+    audio?.addEventListener('ended', handleAudioEnded)
 
     return () => {
-      audio?.removeEventListener('ended', handleEndOfSong)
+      audio?.removeEventListener('ended', handleAudioEnded)
     }
-  }, [themeSongRef])
-  
+  }, [stop, themeSongRef])
+
   return (
     <>
       {
