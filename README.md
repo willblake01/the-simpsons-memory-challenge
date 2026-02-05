@@ -1,6 +1,6 @@
 # The Simpsons Memory Challenge
 
-![The Simpsons TV show](https://www.pluggedin.com/wp-content/uploads/2020/01/the-simpsons-review-image-1024x587.jpg)
+![The Simpsons TV show](https://res.cloudinary.com/willblake01/image/upload/v1770242617/portfolio/simpsons-memory-game.webp)
 
 ## Instructions
 
