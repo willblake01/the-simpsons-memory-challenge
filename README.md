@@ -1,6 +1,6 @@
 # The Simpsons Memory Challenge
 
-![The Simpsons TV show](https://res.cloudinary.com/willblake01/image/upload/q_auto/f_auto/v1770242617/portfolio/simpsons-memory-game.webp)
+![The Simpsons TV show](https://res.cloudinary.com/willblake01/image/upload/q_auto/f_auto/v1770242617/portfolio/projects/the-simpsons-memory-challenge.webp)
 
 ## Instructions
 
